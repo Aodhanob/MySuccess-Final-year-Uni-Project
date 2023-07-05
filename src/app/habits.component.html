@@ -1,0 +1,35 @@
+<div class="container" style="margin-top: 70px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div *ngFor = "let habit of habit_list | async">
+                    <div class="card text-white bg-primary mb-3"
+                        style =  "cursor: pointer;"
+                        [routerLink]= "['/habits', habit._id]">
+                        <div class="card-header">
+                            {{habit.name}}
+                        </div>
+                        <div class="card-body">
+                            This habit is for
+                            {{habit.habit}}
+                        </div>
+                        <div class="card-footer">
+                            {{habit.reviews_count}}
+                            Reviews available
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <button class="btn btn-primary" (click)="previousPage()">Previous</button>
+            </div>
+
+            <div class="col-sm-6">
+                <button class="btn btn-primary" style="float: right" (click)="nextPage()">Next</button>
+            </div>
+        </div>
+    </div>
+</div>
