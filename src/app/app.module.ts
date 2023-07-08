@@ -36,7 +36,7 @@ var routes: any = [
     RouterModule.forRoot(routes),
     AuthModule.forRoot({
       domain: 'dev-aodhanobrien.uk.auth0.com',
-      clientId: 'qW6Go7Mbfq5p6fcJnZIytLOwrIqLHcWe',
+      clientId: '5lLmWr5EuBbiwClhQQRMsAH3Fcmhsd3O',
       authorizationParams:{
         redirect_uri: 'http://localhost:4200'
       }
