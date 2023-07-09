@@ -11,6 +11,7 @@ import { HabitComponent } from './habit.component';
 import { AuthModule } from '@auth0/auth0-angular';
 import { createAuth0Client } from '@auth0/auth0-spa-js';
 import { NavComponent } from './nav.component';
+import { ScheduleModule, RecurrenceEditorModule, DayService, WeekService,WorkWeekService, MonthService, MonthAgendaService } from '@syncfusion/ej2-angular-schedule';
 
 var routes: any = [
   {
@@ -40,9 +41,10 @@ var routes: any = [
       authorizationParams:{
         redirect_uri: 'http://localhost:4200'
       }
-    })
+    }),
+    ScheduleModule, RecurrenceEditorModule
   ],
-  providers: [WebService],
+  providers: [WebService, DayService, WeekService, WorkWeekService, MonthService, MonthAgendaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
