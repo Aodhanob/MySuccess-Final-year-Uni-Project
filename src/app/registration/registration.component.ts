@@ -22,7 +22,7 @@ export class RegistrationComponent {
       password: this.password
     };
 
-    this.http.post('http://localhost:5000/register', userData).subscribe(
+    this.http.post('http://localhost:5000/api/v1.0/users/registration', userData).subscribe(
       () => {
         console.log('Registration successful');
         // Redirect to login page or perform other actions
