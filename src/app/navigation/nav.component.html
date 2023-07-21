@@ -16,10 +16,11 @@
     </ul>
 
     <div class="form-inline ml-auto" style="margin-right: 10px;">
-        
+
         <ng-container *ngIf = "authService.isAuthenticated$ | async; else loggedOut">
             <button class="btn btn-outline-light" (click) = "authService.logout()">Logout</button>
         </ng-container>
+        
     
     
         <ng-template #loggedOut>

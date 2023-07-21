@@ -6,11 +6,14 @@ import { View } from '@syncfusion/ej2-angular-schedule';
   selector: 'home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
+  
 })
 export class HomeComponent { 
 
-public setView: View = 'Month';
+  styles?: string[]
 
-  constructor(public authService: AuthService){ }
+  public setView: View = 'Month'; // Calendar displayed as Month view for user.
+
+    constructor(public authService: AuthService){ }
 
 }

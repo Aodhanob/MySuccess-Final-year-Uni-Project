@@ -21,4 +21,23 @@
             </div>
         </div>
     </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card-bg-light mb-3" style="width: 30em; margin: auto;"
+                *ngFor="let note of notes | async">
+                    <div class="card-header">
+                        Notes by {{ note.name }}
+                    </div>
+                    <div class="card-body">
+                        {{ note.text }}
+                    </div>
+                    <hr>
+                    <div class="card-footer">
+                        {{ note.stars }} stars
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

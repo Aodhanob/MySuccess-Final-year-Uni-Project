@@ -3,9 +3,14 @@
         <div class="row">
             <div class="col-sm-18">
                 <div class="card-header">
+                    <ul class="header center" style="text-align: right;" *ngIf = "authService.user$ | async as user">
+                        <h1>Welcome back!</h1>
+                        <p>Name: {{ user.name}} </p>
+                        <p>Email: {{ user.email}} </p> 
+                    </ul>
                 </div>
                 <div class="calendar">
-                    <ejs-schedule [currentView]="setView"></ejs-schedule>
+                    <ejs-schedule [currentView]="setView"></ejs-schedule> <!--Syncfusion Calendar API-->
                 </div>
             </div>
         </div>

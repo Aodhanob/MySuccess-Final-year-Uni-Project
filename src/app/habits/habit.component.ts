@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 export class HabitComponent {
   
   habit_list: any = [];
+  notes: any = [];
 
   constructor(public webService: WebService,
     private route: ActivatedRoute) { }
