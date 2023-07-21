@@ -18,6 +18,8 @@ export class HabitComponent {
   ngOnInit() {
     this.habit_list = this.webService.getHabit(
         this.route.snapshot.params['id'] );
+        this.notes = this.webService.getNotes(
+          this.route.snapshot.params['id'] );
   }
 
 }
