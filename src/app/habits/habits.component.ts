@@ -80,10 +80,4 @@ export class HabitsComponent {
     this.habit_list = this.webService.getHabits(this.page);
   }
 
-  visible = false;
-
-  toggleCollapse(): void {
-    this.visible = !this.visible;
-  }
-
 }
