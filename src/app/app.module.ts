@@ -16,6 +16,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AboutComponent } from './about/about.component';
+import { AddHabitComponent } from './habits/add-habit/add-habit.component';
 
 var routes: any = [
   {
@@ -37,12 +38,16 @@ var routes: any = [
   {
     path: 'about',
     component: AboutComponent
+  },
+  {
+    path: 'add-habit',
+    component: AddHabitComponent
   }
 ];
 
 @NgModule({
   declarations: [
-    AppComponent, HabitsComponent, HomeComponent, HabitComponent, NavComponent, RegistrationComponent, LoginComponent, AboutComponent
+    AppComponent, HabitsComponent, HomeComponent, HabitComponent, NavComponent, RegistrationComponent, LoginComponent, AboutComponent, AddHabitComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,
