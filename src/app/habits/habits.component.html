@@ -1,5 +1,42 @@
 <div class="container" style="margin-top: 100px; margin-bottom: 20px;">
-    <div class="container">
+     <div class="container">
+        <div class="row">
+            <div class="col-sm-12" >
+                <!--Add a new Habit-->
+                <h4 class="header">Add a Habit</h4>
+                <form class="form-floating" [formGroup]= "habitForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <label for="title">Add Habit title:</label>
+                        <input name="title" id="floatingInputValue" placeholder="Title" row="3" class="form-control" formControlName="title" [ngClass]= "{ 'error' : isInValid('title')}">
+                    </div>
+                    <div class="form-group">
+                        <label for="habit">Add a New Habit:</label>
+                        <input name="habit" id="habit" row="3" class="form-control" placeholder="Habit type (e.g. Reading, Walking, Gym etc.)" formControlName="habit" [ngClass] ="{ 'error' : isInValid('habit')}">
+                    </div>
+                    <div class="form-group">
+                        <label for="notes">Add a Note:</label>
+                        <textarea name="notes" id="notes" id="floatingTextarea" row="3" placeholder="Enter note, (e.g. Remember to bring water bottle for the gym)" class="form-control" formControlName="notes" [ngClass]= "{ 'error' : isInValid('notes')}"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="priority">Please set a Priority for this Habit <strong>(P5 = Top Priority)</strong>:</label>
+                        <select name="priority" id="priority" class="form-control" formControlName="priority">
+                            <option value="1">P1</option>
+                            <option value="2">P2</option>
+                            <option value="3">P3</option>
+                            <option value="4">P4</option>
+                            <option value="5">P5</option>
+                        </select>
+                    </div>
+
+                    <span *ngIf="isInComplete()">You Must Complete all forms</span>
+                    <button type="submit" *ngIf="!isInComplete()" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!--List habits-->
+    <div class="container" style="margin-top: 10px;">
         <div class="row">
             <div class="col-sm-12">
                 <div *ngFor = "let habit of habit_list | async">
@@ -7,15 +44,19 @@
                         style =  "cursor: pointer;"
                         [routerLink]= "['/habits', habit._id]">
                         <div class="card-header">
-                            {{habit.name}}
+                            {{habit.title}}
                         </div>
                         <div class="card-body">
-                            This habit is for
+                            Habit:
                             {{habit.habit}}
                         </div>
                         <div class="card-footer">
+                            Notes: <br>
                             {{habit.notes}}
-                            Notes Available
+                        </div>
+                        <div class="card-footer">
+                            Priority:
+                            {{habit.priority}}
                         </div>
                     </div>
                 </div>

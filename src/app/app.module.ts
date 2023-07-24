@@ -14,7 +14,8 @@ import { NavComponent } from './navigation/nav.component';
 import { ScheduleModule, RecurrenceEditorModule, DayService, WeekService,WorkWeekService, MonthService, MonthAgendaService } from '@syncfusion/ej2-angular-schedule';
 import { RegistrationComponent } from './registration/registration.component';
 import { LoginComponent } from './login/login.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AboutComponent } from './about/about.component';
 
 var routes: any = [
   {
@@ -32,12 +33,16 @@ var routes: any = [
   {
     path: 'registration',
     component: RegistrationComponent
+  },
+  {
+    path: 'about',
+    component: AboutComponent
   }
 ];
 
 @NgModule({
   declarations: [
-    AppComponent, HabitsComponent, HomeComponent, HabitComponent, NavComponent, RegistrationComponent, LoginComponent
+    AppComponent, HabitsComponent, HomeComponent, HabitComponent, NavComponent, RegistrationComponent, LoginComponent, AboutComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,
@@ -49,7 +54,7 @@ var routes: any = [
         redirect_uri: 'http://localhost:4200'
       }
     }),
-    ScheduleModule, RecurrenceEditorModule, FormsModule
+    ScheduleModule, RecurrenceEditorModule, FormsModule, ReactiveFormsModule
   ],
   providers: [WebService, DayService, WeekService, WorkWeekService, MonthService, MonthAgendaService],
   bootstrap: [AppComponent]

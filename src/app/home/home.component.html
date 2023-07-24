@@ -1,14 +1,8 @@
-<div class="container" style="margin-top: 70px;">
+<div class="container" style="margin-top: 100px; margin-bottom: 30px;">
     <div class="container">
         <div class="row">
             <div class="col-sm-18">
-                <div class="card-header">
-                    <ul class="header center" style="text-align: right;" *ngIf = "authService.user$ | async as user">
-                        <h1>Welcome back!</h1>
-                        <p>Name: {{ user.name}} </p>
-                        <p>Email: {{ user.email}} </p> 
-                    </ul>
-                </div>
+                <h2 class="header">Calendar & Routine!</h2>
                 <div class="calendar">
                     <ejs-schedule [currentView]="setView"></ejs-schedule> <!--Syncfusion Calendar API-->
                 </div>

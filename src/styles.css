@@ -1,16 +1,19 @@
 @import '../node_modules/@syncfusion/ej2-material-theme/styles/material.css';
 
 .header {
-    font-size: 15px;
+    font-size: 26px;
     text-decoration: right;
     font-weight: 600;
-    background-image: linear-gradient(to left, #113b7a, #398ddb);
+    background-image: linear-gradient(to left, #103772, #3a92e6);
     color: transparent;
     background-clip: text;
     -webkit-background-clip: text;
+    text-align: center;
   }
 
 .center {
     border: 5px solid;
     text-align: center;
   }
+
+.error { background-color:  #fff0f0; }
