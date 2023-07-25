@@ -1,46 +1,52 @@
-<div class="container" style="margin-top: 100px;">
-    <div class="row">
-        <div class="col-sm-6;">
-            <button class="btn btn-primary" routerLink="/add-habit">Add New Habit</button>
-        </div>
+<div class="container" style="margin-top: 100px">
+  <div class="row">
+    <div class="col-sm-6;">
+      <button class="btn btn-primary" routerLink="/add-habit">
+        Add New Habit
+      </button>
     </div>
+  </div>
 </div>
 
-<div class="container" style="margin-top: 30px; margin-bottom: 20px;">
-<!--List habits-->
-    <div class="row">
-        <div class="col-sm-12">
-            <div *ngFor = "let habit of habit_list | async">
-                <div class="card text-white bg-primary mb-3"
-                    style =  "cursor: pointer;"
-                    [routerLink]= "['/habits', habit._id]">
-                    <div class="card-header">
-                        {{habit.title}}
-                    </div>
-                    <div class="card-body">
-                        Habit:
-                        {{habit.habit}}
-                    </div>
-                    <div class="card-footer">
-                        Notes: <br>
-                        {{habit.notes}}
-                    </div>
-                    <div class="card-footer">
-                        Priority:
-                        {{habit.priority}}
-                    </div>
-                </div>
-            </div>
+<div class="container" style="margin-top: 30px; margin-bottom: 20px">
+  <!--List habits-->
+  <div class="row">
+    <div class="col-sm-12">
+      <div *ngFor="let habit of habit_list | async">
+        <div
+          class="card text-white bg-primary mb-3"
+          style="cursor: pointer"
+          [routerLink]="['/habits', habit._id]"
+        >
+          <div class="card-header">
+            {{ habit.title }}
+          </div>
+          <div class="card-body">
+            Habit:
+            {{ habit.habit }}
+          </div>
+          <div class="card-footer">
+            Notes: <br />
+            {{ habit.notes }}
+          </div>
+          <div class="card-footer">
+            Priority:
+            {{ habit.priority }}
+          </div>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <button class="btn btn-primary" (click)="previousPage()">Previous</button>
     </div>
 
-    <div class="row">
-        <div class="col-sm-6">
-            <button class="btn btn-primary" (click)="previousPage()">Previous</button>
-        </div>
-
-        <div class="col-sm-6">
-            <button class="btn btn-primary" style="float: right" (click)="nextPage()">Next</button>
-        </div>
+    <div class="col-sm-6">
+      <button class="btn btn-primary" style="float: right" (click)="nextPage()">
+        Next
+      </button>
     </div>
+  </div>
 </div>

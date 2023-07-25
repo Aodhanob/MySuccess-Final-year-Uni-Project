@@ -11,6 +11,17 @@
     text-align: center;
   }
 
+  .sub-header {
+    font-size: 20px;
+    text-decoration: right;
+    font-weight: 600;
+    background-image: linear-gradient(to left, #103772, #3a92e6);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    text-align: center;
+  }
+
 .center {
     border: 5px solid;
     text-align: center;
