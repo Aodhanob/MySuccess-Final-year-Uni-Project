@@ -1,7 +1,15 @@
 <div class="container" style="margin-top: 100px">
+  <h2 class="header">
+    Habits:
+    <p class="sub-header" *ngIf="authService.user$ | async as user">
+      Welcome back
+      {{ user.name }}
+    </p>
+  </h2>
+
   <div class="row">
-    <div class="col-sm-6;">
-      <button class="btn btn-primary" routerLink="/add-habit">
+    <div class="col-sm-6">
+      <button class="btn btn-success" routerLink="/add-habit">
         Add New Habit
       </button>
     </div>
@@ -14,7 +22,7 @@
     <div class="col-sm-12">
       <div *ngFor="let habit of habit_list | async">
         <div
-          class="card text-white bg-primary mb-3"
+          class="card text-white bg-info mb-3"
           style="cursor: pointer"
           [routerLink]="['/habits', habit._id]"
         >
