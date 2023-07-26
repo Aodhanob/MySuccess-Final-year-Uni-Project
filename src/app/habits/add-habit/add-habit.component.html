@@ -25,7 +25,7 @@
             <label for="habit">Add a New Habit:</label>
             <input
               name="habit"
-              id="habit"
+              id="floatingInputValue"
               row="3"
               class="form-control"
               placeholder="Habit type (e.g. Reading, Walking, Gym etc.)"
@@ -37,7 +37,6 @@
             <label for="notes">Add a Note:</label>
             <textarea
               name="notes"
-              id="notes"
               id="floatingTextarea"
               row="3"
               placeholder="Enter note, (e.g. Remember to bring water bottle for the gym)"
@@ -69,6 +68,9 @@
           <button type="submit" *ngIf="!isInComplete()" class="btn btn-primary">
             Submit
           </button>
+          <div *ngIf="showAlert" class="alert alert-success" role="alert">
+            New Habit Successfully Added!
+          </div>
         </form>
       </div>
     </div>

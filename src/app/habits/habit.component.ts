@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { WebService } from '../web.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'habit',
@@ -12,12 +13,15 @@ export class HabitComponent {
   constructor(
     public webService: WebService,
     private route: ActivatedRoute,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
   ) {}
 
   noteForm: any; // form property
   habit_list: any = []; // habits property
   notes: any = []; // notes property
+  private habitID: any; // habit id property
+  showAlert: boolean = false;
 
   ngOnInit() {
     this.noteForm = this.formBuilder.group({
@@ -32,16 +36,26 @@ export class HabitComponent {
     this.notes = this.webService.getNotes(this.route.snapshot.params['id']);
   }
 
-  // on form Submit
+  // Form onSubmit
   onSubmit() {
-    // this.webService.postNote(this.route.snapshot.paramMap.get('id'));
-    // this.noteForm.reset();
-    this.webService.postNote(this.noteForm.value).subscribe((Response: any) => {
+    this.webService.postNote(this.noteForm.value).subscribe((response: any) => {
       this.noteForm.reset();
-      this.notes = this.webService.getNotes(
-        this.route.snapshot.paramMap.get('id')
+      this.notes = this.webService.getNotes(this.route.snapshot.params['id']);
+    });
+  }
+
+  // Delete habit
+  onDelete(id: any) {
+    this.habitID = id;
+    this.webService.deleteHabit(this.habitID).subscribe((response: any) => {
+      this.habit_list = this.webService.getHabit(
+        this.route.snapshot.params['id']
       );
     });
+    this.showAlert = true;
+    setTimeout(() => {
+      this.router.navigate(['/habits']);
+    }, 2000);
   }
 
   // Forms validation
