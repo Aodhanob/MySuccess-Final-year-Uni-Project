@@ -22,6 +22,7 @@ export class HabitComponent {
   notes: any = []; // notes property
   private habitID: any; // habit id property
   showAlert: boolean = false;
+  showNoteAlert: boolean = false;
 
   ngOnInit() {
     this.noteForm = this.formBuilder.group({
@@ -42,6 +43,10 @@ export class HabitComponent {
       this.noteForm.reset();
       this.notes = this.webService.getNotes(this.route.snapshot.params['id']);
     });
+    this.showNoteAlert = true;
+    setTimeout(() => {
+      this.router.navigate(['/habits']);
+    }, 2000);
   }
 
   // Delete habit
