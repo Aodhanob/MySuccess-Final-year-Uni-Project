@@ -65,14 +65,13 @@ export class WebService {
   }
 
   editHabit(habit: any) {
-    let postData = new FormData();
-    postData.append('habit', habit.habit);
-    postData.append('title', habit.title);
-    postData.append('priority', habit.priority);
+    let putData = new FormData();
+    putData.append('habit', habit.habit);
+    putData.append('title', habit.title);
 
     return this.http.put(
-      'http://localhost:5000/api/v1.0/habits' + this.habitID,
-      postData
+      'http://localhost:5000/api/v1.0/habits/' + this.habitID,
+      putData
     );
   }
 }

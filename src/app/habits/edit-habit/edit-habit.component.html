@@ -29,43 +29,13 @@
               [ngClass]="{ error: isInValid('habit') }"
             />
           </div>
-          <div class="form-group">
-            <label for="notes">Add New Note:</label>
-            <textarea
-              name="notes"
-              id="floatingTextarea"
-              row="3"
-              placeholder="Enter note, (e.g. Remember to bring water bottle for the gym)"
-              class="form-control"
-              formControlName="notes"
-              [ngClass]="{ error: isInValid('notes') }"
-            ></textarea>
-          </div>
-          <div class="form-group">
-            <label for="priority"
-              >Please set a Priority for this Habit
-              <strong>(P5 = Top Priority)</strong>:</label
-            >
-            <select
-              name="priority"
-              id="priority"
-              class="form-control"
-              formControlName="priority"
-            >
-              <option value="1">P1</option>
-              <option value="2">P2</option>
-              <option value="3">P3</option>
-              <option value="4">P4</option>
-              <option value="5">P5</option>
-            </select>
-          </div>
 
           <span *ngIf="isInComplete()">You Must Complete all forms</span>
           <button type="submit" *ngIf="!isInComplete()" class="btn btn-primary">
             Submit
           </button>
           <div *ngIf="showEditAlert" class="alert alert-success" role="alert">
-            Habit Successfully Edited!
+            Habit successfully edited!
           </div>
         </form>
       </div>
