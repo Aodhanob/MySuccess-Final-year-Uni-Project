@@ -11,58 +11,90 @@ import { HabitComponent } from './habits/habit.component';
 import { AuthModule } from '@auth0/auth0-angular';
 import { createAuth0Client } from '@auth0/auth0-spa-js';
 import { NavComponent } from './navigation/nav.component';
-import { ScheduleModule, RecurrenceEditorModule, DayService, WeekService,WorkWeekService, MonthService, MonthAgendaService } from '@syncfusion/ej2-angular-schedule';
+import {
+  ScheduleModule,
+  RecurrenceEditorModule,
+  DayService,
+  WeekService,
+  WorkWeekService,
+  MonthService,
+  MonthAgendaService,
+} from '@syncfusion/ej2-angular-schedule';
 import { RegistrationComponent } from './registration/registration.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AboutComponent } from './about/about.component';
 import { AddHabitComponent } from './habits/add-habit/add-habit.component';
+import { EditHabitComponent } from './habits/edit-habit/edit-habit.component';
 
 var routes: any = [
   {
     path: '',
-    component: HomeComponent
+    component: HomeComponent,
   },
   {
     path: 'habits',
-    component: HabitsComponent
+    component: HabitsComponent,
   },
   {
     path: 'habits/:id',
-    component: HabitComponent
+    component: HabitComponent,
   },
   {
     path: 'registration',
-    component: RegistrationComponent
+    component: RegistrationComponent,
   },
   {
     path: 'about',
-    component: AboutComponent
+    component: AboutComponent,
   },
   {
     path: 'add-habit',
-    component: AddHabitComponent
-  }
+    component: AddHabitComponent,
+  },
+  {
+    path: 'habits/:id/edit-habit',
+    component: EditHabitComponent,
+  },
 ];
 
 @NgModule({
   declarations: [
-    AppComponent, HabitsComponent, HomeComponent, HabitComponent, NavComponent, RegistrationComponent, LoginComponent, AboutComponent, AddHabitComponent
+    AppComponent,
+    HabitsComponent,
+    HomeComponent,
+    HabitComponent,
+    NavComponent,
+    RegistrationComponent,
+    LoginComponent,
+    AboutComponent,
+    AddHabitComponent,
+    EditHabitComponent,
   ],
   imports: [
-    BrowserModule, HttpClientModule,
+    BrowserModule,
+    HttpClientModule,
     RouterModule.forRoot(routes),
     AuthModule.forRoot({
       domain: 'dev-aodhanobrien.uk.auth0.com',
       clientId: '5lLmWr5EuBbiwClhQQRMsAH3Fcmhsd3O',
-      authorizationParams:{
-        redirect_uri: 'http://localhost:4200'
-      }
+      authorizationParams: {
+        redirect_uri: 'http://localhost:4200',
+      },
     }),
-    ScheduleModule, RecurrenceEditorModule, FormsModule, ReactiveFormsModule
+    ScheduleModule,
+    RecurrenceEditorModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
-  providers: [WebService, DayService, WeekService, WorkWeekService, MonthService, MonthAgendaService],
-  bootstrap: [AppComponent]
+  providers: [
+    WebService,
+    DayService,
+    WeekService,
+    WorkWeekService,
+    MonthService,
+    MonthAgendaService,
+  ],
+  bootstrap: [AppComponent],
 })
-
-export class AppModule { }
+export class AppModule {}
