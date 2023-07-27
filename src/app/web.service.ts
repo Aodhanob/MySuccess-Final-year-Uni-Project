@@ -37,11 +37,6 @@ export class WebService {
     postData.append('notes', note.note);
     postData.append('priority', note.priority);
 
-    // let today = new Date();
-    // let todayDate =
-    //   today.getFullYear() + '-' + today.getMonth() + '-' + today.getDate();
-    // postData.append('date', todayDate);
-
     return this.http.post(
       'http://localhost:5000/api/v1.0/habits/' + this.habitID + '/notes',
       postData
@@ -51,7 +46,6 @@ export class WebService {
   postNewHabit(habit: any) {
     let postData = new FormData();
     postData.append('habit', habit.habit);
-    postData.append('notes', habit.note);
     postData.append('priority', habit.priority);
     postData.append('title', habit.title);
 

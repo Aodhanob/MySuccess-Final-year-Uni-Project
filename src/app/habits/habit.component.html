@@ -12,10 +12,6 @@
               {{ habit.habit }}
             </div>
             <div class="card-footer">
-              Notes: <br />
-              {{ habit.notes }}
-            </div>
-            <div class="card-footer">
               Priority:
               {{ habit.priority }}
             </div>
@@ -24,13 +20,13 @@
       </div>
     </div>
   </div>
-  <div class="container">
+  <!-- <div class="container">
     <div class="row">
       <div class="col-sm-12">
         <div *ngFor="let note of notes" class="card-bg-light mb-3">
           <div class="card-header">
             Note by:
-            {{ note.note }} on {{ note.date.substr(0, 10) | date }}
+            {{ note.notes }}
           </div>
           <hr />
           <div class="card-footer">
@@ -39,90 +35,96 @@
           </div>
         </div>
       </div>
+    </div> -->
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card bg-light mb-3" *ngFor="let note of notes | async">
+          <div class="card-header">Notes: {{ note.notes }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div *ngFor="let habit of habit_list | async">
+        <button
+          class="btn btn-info"
+          [routerLink]="[habit, 'edit-habit']"
+          style="float: right"
+        >
+          Edit Habit
+        </button>
+      </div>
     </div>
 
     <div class="row">
-      <div class="col-sm-6">
-        <div *ngFor="let habit of habit_list | async">
+      <div class="col-sm-12">
+        <div *ngFor="let habitID of habit_list | async">
           <button
-            class="btn btn-info"
-            [routerLink]="[habit, 'edit-habit']"
-            style="float: right"
+            (click)="onDelete(habitID)"
+            type="button"
+            id="delete_habit"
+            class="btn btn-danger"
+            style="margin-bottom: 10px; margin-right: 10px; float: right"
           >
-            Edit Habit
+            Delete Habit
           </button>
         </div>
       </div>
-
-      <div class="row">
-        <div class="col-sm-12">
-          <div *ngFor="let habitID of habit_list | async">
-            <button
-              (click)="onDelete(habitID)"
-              type="button"
-              id="delete_habit"
-              class="btn btn-danger"
-              style="margin-bottom: 10px; margin-right: 10px; float: right"
-            >
-              Delete Habit
-            </button>
-          </div>
-        </div>
-      </div>
     </div>
+  </div>
 
-    <div class="container card bg-light" style="padding: 20px">
-      <div class="row">
-        <div class="col-sm-12">
-          <div *ngIf="showAlert" class="alert alert-danger" role="alert">
-            Habit successfully deleted!
+  <div class="container card bg-light" style="padding: 20px">
+    <div class="row">
+      <div class="col-sm-12">
+        <div *ngIf="showAlert" class="alert alert-success" role="alert">
+          Habit successfully deleted!
+        </div>
+        <h4>Add a Note</h4>
+        <form [formGroup]="noteForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="note">Please a Habit Note below</label>
+            <textarea
+              name="note"
+              id="floatingTextarea"
+              placeholder="Enter note (e.g. Bring water bottle to the Gym)"
+              row="3"
+              class="form-control"
+              formControlName="note"
+              [ngClass]="{ error: isInValid('note') }"
+            ></textarea>
           </div>
-          <h4>Add a Note</h4>
-          <form [formGroup]="noteForm" (ngSubmit)="onSubmit()">
-            <div class="form-group">
-              <label for="note">Please a Habit Note below</label>
-              <textarea
-                name="note"
-                id="floatingTextarea"
-                placeholder="Enter note (e.g. Bring water bottle to the Gym)"
-                row="3"
-                class="form-control"
-                formControlName="note"
-                [ngClass]="{ error: isInValid('note') }"
-              ></textarea>
-            </div>
-            <div class="form-group">
-              <label for="priority"
-                >Please set a Priority for this Note (P5 = Top Priority)</label
-              >
-              <select
-                name="priority"
-                id="priority"
-                class="form-control"
-                formControlName="priority"
-              >
-                <option value="1">P1</option>
-                <option value="2">P2</option>
-                <option value="3">P3</option>
-                <option value="4">P4</option>
-                <option value="5">P5</option>
-              </select>
-            </div>
-
-            <span *ngIf="isInComplete()">You Must Complete all forms</span>
-            <button
-              *ngIf="!isInComplete()"
-              type="submit"
-              class="btn btn-primary"
+          <div class="form-group">
+            <label for="priority"
+              >Please set a Priority for this Note (P1 = Top Priority)</label
             >
-              Submit
-            </button>
-          </form>
-          <div *ngIf="showNoteAlert" class="alert alert-danger" role="alert">
-            New Note Added!
+            <select
+              name="priority"
+              id="priority"
+              class="form-control"
+              formControlName="priority"
+            >
+              <option value="1">P1</option>
+              <option value="2">P2</option>
+              <option value="3">P3</option>
+              <option value="4">P4</option>
+              <option value="5">P5</option>
+            </select>
           </div>
+
+          <span *ngIf="isInComplete()">You Must Complete all forms</span>
+          <button *ngIf="!isInComplete()" type="submit" class="btn btn-primary">
+            Submit
+          </button>
+        </form>
+        <div *ngIf="showNoteAlert" class="alert alert-success" role="alert">
+          New Note Added!
         </div>
       </div>
     </div>
   </div>
 </div>
+<!-- </div> -->

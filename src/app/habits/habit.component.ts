@@ -21,19 +21,19 @@ export class HabitComponent {
   habit_list: any = []; // habits property
   notes: any = []; // notes property
   private habitID: any; // habit id property
+  private note: any;
   showAlert: boolean = false;
   showNoteAlert: boolean = false;
 
   ngOnInit() {
     this.noteForm = this.formBuilder.group({
       note: ['', Validators.required],
-      priority: [5, Validators.required],
+      priority: [1, Validators.required],
     });
 
     this.habit_list = this.webService.getHabit(
       this.route.snapshot.params['id']
     );
-
     this.notes = this.webService.getNotes(this.route.snapshot.params['id']);
   }
 

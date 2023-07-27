@@ -35,8 +35,7 @@ export class AddHabitComponent {
     this.habitForm = this.formBuilder.group({
       title: ['', Validators.required],
       habit: ['', Validators.required],
-      priority: 5,
-      notes: ['', Validators.required],
+      priority: 3,
     });
   }
 
@@ -72,10 +71,7 @@ export class AddHabitComponent {
 
   isInComplete() {
     return (
-      this.isInValid('title') ||
-      this.isInValid('habit') ||
-      this.isInValid('notes') ||
-      this.isUnTouched()
+      this.isInValid('title') || this.isInValid('habit') || this.isUnTouched()
     );
   }
 }
