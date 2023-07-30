@@ -1,1 +1,7 @@
-.error { background-color:  #fff0f0; }
+.error {
+  background-color: #fff0f0;
+}
+
+.button-container {
+  display: flex;
+}

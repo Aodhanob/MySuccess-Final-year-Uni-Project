@@ -15,6 +15,14 @@ export class WebService {
     return this.http.get('http://localhost:5000/api/v1.0/habits?pn=' + page);
   }
 
+  getHabitsByNewest() {
+    return this.http.get('http://localhost:5000/api/v1.0/habits/newest');
+  }
+
+  getHabitsByPriority() {
+    return this.http.get('http://localhost:5000/api/v1.0/habits/priority');
+  }
+
   getHabit(id: any) {
     this.habitID = id;
     return this.http.get('http://localhost:5000/api/v1.0/habits/' + id);
